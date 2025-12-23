@@ -1047,7 +1047,7 @@
         try {
           // API URL: Python FastAPI
           const response = await fetch(
-            "http://api.serbestborsa.com:8000/posts"
+            "https://api.serbestborsa.com/posts"
           );
           if (!response.ok) throw new Error("API Hatası");
           const posts = await response.json();
