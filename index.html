@@ -63,7 +63,9 @@
         scroll-behavior: smooth;
         box-sizing: border-box;
       }
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         box-sizing: inherit;
       }
       body {
@@ -75,15 +77,37 @@
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
       }
-      h1, h2, h3, h4, h5 {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
         font-family: "Playfair Display", serif;
         margin: 0;
       }
-      p { margin: 0; }
-      ul { list-style: none; margin: 0; padding: 0; }
-      a { text-decoration: none; color: inherit; transition: color 0.3s; }
-      img { max-width: 100%; height: auto; display: block; }
-      button { border: none; background: none; cursor: pointer; }
+      p {
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.3s;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      button {
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
 
       /* Genel Yardımcılar */
       .container {
@@ -92,7 +116,9 @@
         margin: 0 auto;
         padding: 0 1rem;
       }
-      .section { padding: 4rem 0; }
+      .section {
+        padding: 4rem 0;
+      }
 
       /* --- HEADER & NAVİGASYON --- */
       .site-header {
@@ -116,7 +142,7 @@
         align-items: center;
         width: 100%;
       }
-      
+
       /* Logo Alanı */
       .logo-wrapper {
         display: flex;
@@ -135,7 +161,7 @@
         font-family: "Playfair Display", serif;
         font-size: 1.5rem;
         font-weight: 700;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
       .logo-text-group {
         display: flex;
@@ -170,9 +196,11 @@
         position: relative;
         padding: 0.5rem 0;
       }
-      .nav-link:hover { color: var(--brand-primary); }
+      .nav-link:hover {
+        color: var(--brand-primary);
+      }
       .nav-link::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -181,7 +209,9 @@
         background-color: var(--brand-primary);
         transition: width 0.3s;
       }
-      .nav-link:hover::after { width: 100%; }
+      .nav-link:hover::after {
+        width: 100%;
+      }
 
       /* Mobil Menü */
       .mobile-toggle {
@@ -197,9 +227,11 @@
         width: 100%;
         background: var(--white);
         border-top: 1px solid var(--slate-100);
-        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       }
-      .mobile-menu-container.active { display: block; }
+      .mobile-menu-container.active {
+        display: block;
+      }
       .mobile-link {
         display: block;
         padding: 1rem;
@@ -235,7 +267,7 @@
         gap: 3rem;
         align-items: center;
       }
-      
+
       /* Hero Sol Kolon */
       .hero-text-col {
         width: 100%;
@@ -253,7 +285,7 @@
         text-transform: uppercase;
         letter-spacing: 0.1em;
         align-self: flex-start;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
       .hero-desc {
         font-size: 1.125rem;
@@ -280,11 +312,13 @@
         font-weight: 700;
         padding: 1rem 2rem;
         text-transform: uppercase;
-        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s;
         animation: pulse 2s infinite;
       }
-      .cta-button:hover { transform: translateY(-3px); }
+      .cta-button:hover {
+        transform: translateY(-3px);
+      }
 
       /* İstatistikler */
       .stats-grid {
@@ -319,15 +353,19 @@
       }
       .frame-back {
         position: absolute;
-        top: -15px; right: -15px;
-        width: 100%; height: 100%;
+        top: -15px;
+        right: -15px;
+        width: 100%;
+        height: 100%;
         border: 4px solid var(--slate-900);
         z-index: 1;
       }
       .frame-bg {
         position: absolute;
-        bottom: -15px; left: -15px;
-        width: 100%; height: 100%;
+        bottom: -15px;
+        left: -15px;
+        width: 100%;
+        height: 100%;
         background-color: var(--slate-300);
         z-index: 1;
       }
@@ -338,7 +376,7 @@
         border: 2px solid #fff;
         aspect-ratio: 3/4;
         overflow: hidden;
-        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
       }
       .profile-img {
         width: 100%;
@@ -347,8 +385,10 @@
         filter: contrast(1.1) grayscale(0.1);
         transition: transform 0.5s;
       }
-      .profile-img:hover { transform: scale(1.03); }
-      
+      .profile-img:hover {
+        transform: scale(1.03);
+      }
+
       .floating-quote {
         display: none;
         position: absolute;
@@ -360,9 +400,14 @@
         z-index: 20;
         max-width: 250px;
         border-right: 4px solid var(--brand-gold);
-        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
       }
-      .quote-content { font-family: "Playfair Display", serif; font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
+      .quote-content {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
 
       /* --- HİZMETLER --- */
       .services-section {
@@ -404,7 +449,7 @@
       }
       .card:hover {
         border-color: var(--brand-primary);
-        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       }
       .card-icon {
         width: 3.5rem;
@@ -418,12 +463,34 @@
         margin-bottom: 1.5rem;
         transition: 0.3s;
       }
-      .card:hover .card-icon { background: var(--brand-primary); color: var(--white); }
-      
-      .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--slate-900); }
-      .card-desc { font-size: 0.9rem; color: var(--slate-600); margin-bottom: 1.5rem; }
-      .card-link { font-weight: 700; font-size: 0.875rem; text-transform: uppercase; color: var(--brand-dark); display: flex; align-items: center; gap: 0.5rem; }
-      .card-link:hover { color: var(--brand-primary); }
+      .card:hover .card-icon {
+        background: var(--brand-primary);
+        color: var(--white);
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--slate-900);
+      }
+      .card-desc {
+        font-size: 0.9rem;
+        color: var(--slate-600);
+        margin-bottom: 1.5rem;
+      }
+      .card-link {
+        font-weight: 700;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        color: var(--brand-dark);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .card-link:hover {
+        color: var(--brand-primary);
+      }
 
       /* Öne Çıkan Kart (Ortadaki) */
       .card.featured {
@@ -434,7 +501,8 @@
       }
       .card.featured .featured-badge {
         position: absolute;
-        top: 0; right: 0;
+        top: 0;
+        right: 0;
         background: var(--brand-gold);
         color: white;
         font-size: 0.65rem;
@@ -442,11 +510,22 @@
         padding: 0.25rem 0.75rem;
         text-transform: uppercase;
       }
-      .card.featured .card-icon { background: rgba(255,255,255,0.1); color: white; }
-      .card.featured .card-title { color: white; }
-      .card.featured .card-desc { color: #dbeafe; }
-      .card.featured .card-link { color: white; }
-      .card.featured .card-link:hover { color: var(--brand-gold); }
+      .card.featured .card-icon {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+      .card.featured .card-title {
+        color: white;
+      }
+      .card.featured .card-desc {
+        color: #dbeafe;
+      }
+      .card.featured .card-link {
+        color: white;
+      }
+      .card.featured .card-link:hover {
+        color: var(--brand-gold);
+      }
 
       /* --- HAKKIMDA --- */
       .about-section {
@@ -458,8 +537,12 @@
         flex-direction: column;
         gap: 4rem;
       }
-      .about-content h2.sub-heading { color: var(--brand-gold); }
-      .about-content h3.main-heading { color: var(--white); }
+      .about-content h2.sub-heading {
+        color: var(--brand-gold);
+      }
+      .about-content h3.main-heading {
+        color: var(--white);
+      }
       .about-text {
         font-size: 1.1rem;
         font-weight: 300;
@@ -472,18 +555,24 @@
         margin-bottom: 1.5rem;
         color: var(--slate-300);
       }
-      
+
       .features-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
         margin-top: 2rem;
       }
-      .feature-item { display: flex; gap: 1rem; }
+      .feature-item {
+        display: flex;
+        gap: 1rem;
+      }
       .check-box {
-        width: 2.5rem; height: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
         background: var(--brand-gold);
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
         font-weight: 700;
       }
@@ -495,8 +584,11 @@
         border: 1px solid var(--slate-700);
       }
       .t-title {
-        font-size: 1.25rem; font-family: "Playfair Display", serif; font-weight: 700;
-        margin-bottom: 2rem; padding-bottom: 1rem;
+        font-size: 1.25rem;
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
         border-bottom: 1px solid var(--slate-700);
       }
       .review-item + .review-item {
@@ -504,9 +596,22 @@
         padding-top: 1.5rem;
         border-top: 1px solid var(--slate-700);
       }
-      .stars { color: var(--brand-gold); font-size: 0.75rem; margin-bottom: 0.5rem; }
-      .review-text { font-style: italic; color: var(--slate-300); margin-bottom: 0.75rem; font-size: 0.9rem; }
-      .review-author { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+      .stars {
+        color: var(--brand-gold);
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
+      .review-text {
+        font-style: italic;
+        color: var(--slate-300);
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+      }
+      .review-author {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
 
       /* --- FOOTER --- */
       .site-footer {
@@ -522,32 +627,61 @@
         align-items: center;
         text-align: center;
       }
-      .footer-social { display: flex; gap: 1rem; margin-top: 1rem; font-size: 1.1rem; }
-      .footer-social a:hover { color: var(--white); }
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        font-size: 1.1rem;
+      }
+      .footer-social a:hover {
+        color: var(--white);
+      }
 
       /* --- MEDYA SORGULARI (RESPONSIVE) --- */
       @media (min-width: 768px) {
-        .nav-links { display: flex; }
-        .mobile-toggle { display: none; }
-        
-        .hero { padding-top: 150px; padding-bottom: 6rem; }
+        .nav-links {
+          display: flex;
+        }
+        .mobile-toggle {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 150px;
+          padding-bottom: 6rem;
+        }
         .hero-content {
           flex-direction: row;
           gap: 4rem;
         }
-        .hero-text-col, .hero-img-col { width: 50%; }
+        .hero-text-col,
+        .hero-img-col {
+          width: 50%;
+        }
         .cta-wrapper {
           flex-direction: row;
           align-items: center;
         }
-        .hero-img-col { justify-content: flex-end; }
-        .floating-quote { display: block; }
-        
-        .services-grid { grid-template-columns: repeat(3, 1fr); }
-        
-        .about-container { flex-direction: row; align-items: center; }
-        .about-content, .about-reviews { width: 50%; }
-        
+        .hero-img-col {
+          justify-content: flex-end;
+        }
+        .floating-quote {
+          display: block;
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .about-container {
+          flex-direction: row;
+          align-items: center;
+        }
+        .about-content,
+        .about-reviews {
+          width: 50%;
+        }
+
         .footer-inner {
           flex-direction: row;
           justify-content: space-between;
@@ -556,15 +690,20 @@
       }
 
       @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.8; }
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.8;
+        }
       }
     </style>
 
     <!-- Facebook Pixel -->
     <script>
-      window.addEventListener('load', function() {
-        setTimeout(function() {
+      window.addEventListener("load", function () {
+        setTimeout(function () {
           !(function (f, b, e, v, n, t, s) {
             if (f.fbq) return;
             n = f.fbq = function () {
@@ -593,10 +732,15 @@
         }, 3000);
       });
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3891633874470426&ev=PageView&noscript=1"/></noscript>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=3891633874470426&ev=PageView&noscript=1"
+    /></noscript>
   </head>
   <body>
-    
     <!-- Navigasyon -->
     <header class="site-header">
       <nav class="navbar">
@@ -618,7 +762,7 @@
             <i class="fas fa-bars"></i>
           </button>
         </div>
-        
+
         <div id="mobile-menu" class="mobile-menu-container">
           <a href="#hizmetler" class="mobile-link">HİZMETLER</a>
           <a href="#hakkimda" class="mobile-link">KURUMSAL</a>
@@ -631,24 +775,30 @@
       <section class="hero">
         <div class="hero-bg-accent"></div>
         <div class="container hero-content">
-          
           <div class="hero-text-col">
-            <span class="slogan-badge">"Aselsan, Manas ve Emkel'de Terste Beklemeyin!"</span>
-            
-            <img 
-              src="logo_kevser_abay.jpeg" 
-              alt="Kevser Abay Logo" 
-              width="272" height="80" 
-              style="width: 272px; max-width: 100%; height: auto;"
+            <span class="slogan-badge"
+              >"Aselsan, Manas ve Emkel'de Terste Beklemeyin!"</span
             >
 
+            <img
+              src="logo_kevser_abay.jpeg"
+              alt="Kevser Abay Logo"
+              width="450"
+              height="110"
+              style="width: 450px; max-width: 100%; height: auto"
+            />
+
             <p class="hero-desc">
-              Hacim ve Derinlik analizlerini grupta anlık paylaşıyorum. Soru sormak için kayda gerek yok. Sorularınızı robotlar değil, Ben (Kevser Abay) cevaplıyorum.
+              Hacim ve Derinlik analizlerini grupta anlık paylaşıyorum. Soru
+              sormak için kayda gerek yok. Sorularınızı robotlar değil, Ben
+              (Kevser Abay) cevaplıyorum.
             </p>
 
             <div class="cta-wrapper">
               <span class="cta-text">KAYIT YOK, ÜCRET YOK</span>
-              <a href="https://t.me/+yFdaKkxU7T8yZmZk" class="cta-button">KEVSER ABAY'A SORUNU SOR</a>
+              <a href="https://t.me/+yFdaKkxU7T8yZmZk" class="cta-button"
+                >KEVSER ABAY'A SORUNU SOR</a
+              >
             </div>
 
             <div class="stats-grid">
@@ -672,22 +822,25 @@
               <div class="frame-back"></div>
               <div class="frame-bg"></div>
               <div class="profile-img-box">
-                <img 
-                  src="photo_2025-07-22_11-40-20.jpg" 
+                <img
+                  src="photo_2025-07-22_11-40-20.jpg"
                   onerror="this.src='https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
-                  alt="Kevser Abay" 
+                  alt="Kevser Abay"
                   class="profile-img"
-                  width="448" height="597"
+                  width="448"
+                  height="597"
                   fetchpriority="high"
-                >
+                />
               </div>
               <div class="floating-quote">
-                <i class="fas fa-quote-left" style="color:var(--brand-gold); margin-bottom:0.5rem;"></i>
-                <div class="quote-content">"Mazeret yok,<br>sonuç var."</div>
+                <i
+                  class="fas fa-quote-left"
+                  style="color: var(--brand-gold); margin-bottom: 0.5rem"
+                ></i>
+                <div class="quote-content">"Mazeret yok,<br />sonuç var."</div>
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -697,30 +850,53 @@
           <div class="section-header">
             <div class="sub-heading">Çözümlerim</div>
             <h2 class="main-heading">Profesyonel Yönetim, Tavizsiz Disiplin</h2>
-            <p class="section-desc">Amatörler şansa, profesyoneller stratejiye güvenir. Portföyünüzü duygulardan arındırılmış, matematiksel ve katı kurallarla yönetiyorum.</p>
+            <p class="section-desc">
+              Amatörler şansa, profesyoneller stratejiye güvenir. Portföyünüzü
+              duygulardan arındırılmış, matematiksel ve katı kurallarla
+              yönetiyorum.
+            </p>
           </div>
 
           <div class="services-grid">
             <div class="card">
               <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
               <h3 class="card-title">Portföy Analizi & Optimizasyon</h3>
-              <p class="card-desc">Duygusal bağ kurduğunuz zarardaki hisselerle vedalaşma vakti. Portföyünüzü "acımasızca" analiz eder, sadece kazandıracak varlıklara odaklanırım.</p>
-              <a href="#iletisim" class="card-link">Detaylı Bilgi <i class="fas fa-arrow-right"></i></a>
+              <p class="card-desc">
+                Duygusal bağ kurduğunuz zarardaki hisselerle vedalaşma vakti.
+                Portföyünüzü "acımasızca" analiz eder, sadece kazandıracak
+                varlıklara odaklanırım.
+              </p>
+              <a href="#iletisim" class="card-link"
+                >Detaylı Bilgi <i class="fas fa-arrow-right"></i
+              ></a>
             </div>
 
             <div class="card featured">
               <div class="featured-badge">En Çok Tercih Edilen</div>
               <div class="card-icon"><i class="fas fa-user-tie"></i></div>
               <h3 class="card-title">Bireysel Yatırım Danışmanlığı</h3>
-              <p class="card-desc">Benimle çalışmak, sürekli "al-sat" yapmak demek değildir. Doğru zamanda girmek ve hedef fiyatta çıkmak demektir.</p>
-              <a href="#iletisim" class="card-link">Başvuru Yap <i class="fas fa-arrow-right"></i></a>
+              <p class="card-desc">
+                Benimle çalışmak, sürekli "al-sat" yapmak demek değildir. Doğru
+                zamanda girmek ve hedef fiyatta çıkmak demektir.
+              </p>
+              <a href="#iletisim" class="card-link"
+                >Başvuru Yap <i class="fas fa-arrow-right"></i
+              ></a>
             </div>
 
             <div class="card">
-              <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+              <div class="card-icon">
+                <i class="fas fa-chalkboard-user"></i>
+              </div>
               <h3 class="card-title">Teknik Analiz Eğitimi</h3>
-              <p class="card-desc">Size balık vermiyorum, okyanusta nasıl hayatta kalacağınızı öğretiyorum. Grafikleri okumayı ve piyasa psikolojisine yenilmemeyi öğrenin.</p>
-              <a href="#iletisim" class="card-link">Programı İncele <i class="fas fa-arrow-right"></i></a>
+              <p class="card-desc">
+                Size balık vermiyorum, okyanusta nasıl hayatta kalacağınızı
+                öğretiyorum. Grafikleri okumayı ve piyasa psikolojisine
+                yenilmemeyi öğrenin.
+              </p>
+              <a href="#iletisim" class="card-link"
+                >Programı İncele <i class="fas fa-arrow-right"></i
+              ></a>
             </div>
           </div>
         </div>
@@ -731,29 +907,48 @@
         <div class="container about-container">
           <div class="about-content">
             <h2 class="sub-heading">Hakkımda</h2>
-            <h3 class="main-heading">Sert Piyasa Koşullarına,<br>Çelik İrade</h3>
-            
-            <p class="about-text">Ben <strong>Kevser Abay</strong>. Finans piyasalarında "yumuşak karın" sermaye erimesine yol açar. Yatırımcılığın ilk kuralı para kaybetmemektir.</p>
-            
+            <h3 class="main-heading">
+              Sert Piyasa Koşullarına,<br />Çelik İrade
+            </h3>
+
+            <p class="about-text">
+              Ben <strong>Kevser Abay</strong>. Finans piyasalarında "yumuşak
+              karın" sermaye erimesine yol açar. Yatırımcılığın ilk kuralı para
+              kaybetmemektir.
+            </p>
+
             <div class="highlight-text">
-              10 yılı aşkın süredir finans dünyasında, teknik analizi makroekonomik gerçeklerle birleştirerek, sadece grafikleri değil, "büyük resmi" okumanızı sağlıyorum.
+              10 yılı aşkın süredir finans dünyasında, teknik analizi
+              makroekonomik gerçeklerle birleştirerek, sadece grafikleri değil,
+              "büyük resmi" okumanızı sağlıyorum.
             </div>
-            
-            <p class="about-text" style="color:var(--slate-400)">Bana geldiğinizde sadece bir danışman değil, portföyünüzün başında tavizsiz bir bekçi bulacaksınız.</p>
+
+            <p class="about-text" style="color: var(--slate-400)">
+              Bana geldiğinizde sadece bir danışman değil, portföyünüzün başında
+              tavizsiz bir bekçi bulacaksınız.
+            </p>
 
             <div class="features-list">
               <div class="feature-item">
                 <div class="check-box"><i class="fas fa-check"></i></div>
                 <div>
-                  <h4 style="font-weight:700; margin-bottom:0.25rem">Net Duruş</h4>
-                  <p style="font-size:0.875rem; color:var(--slate-400)">Belirsizliğe yer yok.</p>
+                  <h4 style="font-weight: 700; margin-bottom: 0.25rem">
+                    Net Duruş
+                  </h4>
+                  <p style="font-size: 0.875rem; color: var(--slate-400)">
+                    Belirsizliğe yer yok.
+                  </p>
                 </div>
               </div>
               <div class="feature-item">
                 <div class="check-box"><i class="fas fa-check"></i></div>
                 <div>
-                  <h4 style="font-weight:700; margin-bottom:0.25rem">Risk Kontrolü</h4>
-                  <p style="font-size:0.875rem; color:var(--slate-400)">Duygulara yer yok.</p>
+                  <h4 style="font-weight: 700; margin-bottom: 0.25rem">
+                    Risk Kontrolü
+                  </h4>
+                  <p style="font-size: 0.875rem; color: var(--slate-400)">
+                    Duygulara yer yok.
+                  </p>
                 </div>
               </div>
             </div>
@@ -762,43 +957,76 @@
           <div class="about-reviews">
             <div class="testimonials-box">
               <h4 class="t-title">Danışan Deneyimleri</h4>
-              
+
               <div class="review-item">
                 <div class="stars">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
                 </div>
-                <p class="review-text">"Kevser Hanım'ın o sert ve disiplinli duruşu olmasaydı panikle satış yapıp batmıştım. Bana 'ekrana bakmayı bırak' dediği günü asla unutmam. Sayesinde kazandım."</p>
+                <p class="review-text">
+                  "Kevser Hanım'ın o sert ve disiplinli duruşu olmasaydı panikle
+                  satış yapıp batmıştım. Bana 'ekrana bakmayı bırak' dediği günü
+                  asla unutmam. Sayesinde kazandım."
+                </p>
                 <p class="review-author">AHMET Y. - İŞLETMECİ</p>
               </div>
 
               <div class="review-item">
                 <div class="stars">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
                 </div>
-                <p class="review-text">"Süslü cümleler kurmuyor, neyse onu söylüyor. Piyasada ihtiyacımız olan gerçekçilik bu."</p>
+                <p class="review-text">
+                  "Süslü cümleler kurmuyor, neyse onu söylüyor. Piyasada
+                  ihtiyacımız olan gerçekçilik bu."
+                </p>
                 <p class="review-author">ELİF K. - MİMAR</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        
-        <div style="text-align: inherit;">
-          <div class="logo-wrapper" style="margin-bottom: 0.5rem; justify-content: inherit;">
-            <div class="logo-icon" style="width:24px; height:24px; font-size:0.8rem;">K</div>
-            <span style="font-family:'Playfair Display'; font-weight:700; color:white;">KEVSER ABAY</span>
+        <div style="text-align: inherit">
+          <div
+            class="logo-wrapper"
+            style="margin-bottom: 0.5rem; justify-content: inherit"
+          >
+            <div
+              class="logo-icon"
+              style="width: 24px; height: 24px; font-size: 0.8rem"
+            >
+              K
+            </div>
+            <span
+              style="
+                font-family: 'Playfair Display';
+                font-weight: 700;
+                color: white;
+              "
+              >KEVSER ABAY</span
+            >
           </div>
-          <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase;">Yatırım Danışmanlığı &copy; 2026</span>
+          <span
+            style="
+              font-size: 0.75rem;
+              font-weight: 700;
+              text-transform: uppercase;
+            "
+            >Yatırım Danışmanlığı &copy; 2026</span
+          >
         </div>
 
-        <div style="max-width:400px; font-size:0.75rem; font-weight:500;">
-          <p>Yasal Uyarı: Burada yer alan bilgiler yatırım tavsiyesi değildir.</p>
+        <div style="max-width: 400px; font-size: 0.75rem; font-weight: 500">
+          <p>
+            Yasal Uyarı: Burada yer alan bilgiler yatırım tavsiyesi değildir.
+          </p>
           <div class="footer-social">
             <a href="#"><i class="fab fa-x-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -806,26 +1034,25 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-
       </div>
     </footer>
 
     <script>
       // Mobil Menü Mantığı
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const btn = document.getElementById("menu-btn");
         const menu = document.getElementById("mobile-menu");
-        
-        if(btn && menu) {
+
+        if (btn && menu) {
           btn.addEventListener("click", () => {
             menu.classList.toggle("active");
           });
         }
-        
+
         // Linklere tıklayınca menüyü kapat
-        const links = document.querySelectorAll('.mobile-link');
-        links.forEach(link => {
-          link.addEventListener('click', () => {
+        const links = document.querySelectorAll(".mobile-link");
+        links.forEach((link) => {
+          link.addEventListener("click", () => {
             menu.classList.remove("active");
           });
         });
