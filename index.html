@@ -13,7 +13,7 @@
       content="6dfgrmea0hee4ns05yv8148x8rncmg"
     />
 
-    <!-- Font Awesome (Non-blocking) -->
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -572,7 +572,7 @@
         color: white;
       }
 
-      /* POP-UP MODAL STYLES (NEW) */
+      /* POP-UP MODAL STYLES */
       .modal-overlay {
         position: fixed;
         top: 0;
@@ -606,6 +606,12 @@
         position: relative;
         transform: translateY(20px);
         transition: transform 0.4s ease;
+      }
+
+      /* Success Modal Specific */
+      .success-content {
+        border-top: 6px solid var(--brand-success);
+        text-align: center;
       }
 
       .modal-overlay.active .modal-content {
@@ -699,10 +705,30 @@
         transform: translateY(-2px);
       }
 
+      .btn-success {
+        background-color: var(--brand-success);
+      }
+      .btn-success:hover {
+        background-color: #14532d;
+      }
+
       .form-btn:disabled {
         background-color: var(--slate-400);
         cursor: not-allowed;
         transform: none;
+      }
+
+      .success-icon {
+        width: 4rem;
+        height: 4rem;
+        background-color: #dcfce7; /* green-100 */
+        color: var(--brand-success);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem auto;
+        font-size: 1.5rem;
       }
 
       /* Animations */
@@ -1363,7 +1389,7 @@
       </div>
     </footer>
 
-    <!-- MANDATORY MODAL OVERLAY -->
+    <!-- MANDATORY MODAL OVERLAY (LEAD FORM) -->
     <div id="leadModal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">
@@ -1430,23 +1456,51 @@
       </div>
     </div>
 
+    <!-- SUCCESS MODAL (NEW) -->
+    <div id="successModal" class="modal-overlay">
+      <div class="modal-content success-content">
+        <div class="success-icon">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="modal-header">
+          <h2 class="modal-title">Başvurunuz Alındı!</h2>
+          <p class="modal-subtitle">
+            Bilgileriniz başarıyla tarafımıza ulaştı. En kısa sürede sizinle
+            iletişime geçeceğiz.
+          </p>
+        </div>
+        <button class="form-btn btn-success" onclick="closeSuccessModal()">
+          Tamam
+        </button>
+      </div>
+    </div>
+
     <!-- Scripts -->
     <script>
       // --- CONFIGURATION ---
       // LÜTFEN BURAYI DOLDURUNUZ
       const TELEGRAM_BOT_TOKEN =
-        "8027955335:AAEtMMq5hgWiMrn0i42kjtN0hJ7uaXdvCRk"; // Örn: 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
-      const TELEGRAM_CHAT_ID = "-5111176118"; // Örn: -100123456789
+        "7887729617:AAFEJcOakBWR6xTLo489LhznwwS7DWdpnJs";
+      const TELEGRAM_CHAT_ID = "-1003440055747";
 
       // Mobile Menu Logic
       function showHome() {
         // Simple navigation handler
       }
 
+      function closeSuccessModal() {
+        const successModal = document.getElementById("successModal");
+        if (successModal) {
+          successModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         const btn = document.getElementById("mobile-menu-btn");
         const menu = document.getElementById("mobile-menu");
         const modal = document.getElementById("leadModal");
+        const successModal = document.getElementById("successModal");
 
         if (btn && menu) {
           btn.addEventListener("click", () => {
@@ -1488,6 +1542,22 @@
           const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
           // Check if it's 10 or 11 digits and contains only numbers
           return /^[0-9]{10,11}$/.test(cleanPhone);
+        };
+
+        // Helper: Close Lead Modal
+        const closeLeadModal = () => {
+          if (modal) {
+            modal.classList.remove("active");
+          }
+        };
+
+        // Helper: Open Success Modal
+        const openSuccessModal = () => {
+          if (successModal) {
+            successModal.classList.add("active");
+            // Ensure body scroll is still locked if needed, or handle per UX
+            document.body.style.overflow = "hidden";
+          }
         };
 
         if (form) {
@@ -1536,15 +1606,6 @@
                 `;
 
             try {
-              // Check if token is set (Basic validation to prevent crash if user forgets to set it)
-              if (TELEGRAM_BOT_TOKEN === "BURAYA_BOT_TOKEN_GELECEK") {
-                alert(
-                  "Lütfen sistem yöneticisi ile iletişime geçin (API Token Eksik). Form şimdilik kapatılıyor."
-                );
-                closeModal();
-                return;
-              }
-
               const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
               const response = await fetch(url, {
@@ -1561,28 +1622,22 @@
 
               if (response.ok) {
                 // Success
-                alert("Bilgileriniz başarıyla alındı. Teşekkürler.");
-                closeModal();
+                closeLeadModal();
+                openSuccessModal();
               } else {
                 throw new Error("Telegram API Hatası");
               }
             } catch (error) {
               console.error("Hata:", error);
-              alert("Bir hata oluştu. Ancak siteye devam edebilirsiniz.");
-              closeModal(); // Allow user to proceed even on error to not block them forever
+              // Fallback error alert if fetch fails completely (e.g. adblocker or connection lost)
+              alert(
+                "Bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."
+              );
             } finally {
               submitBtn.disabled = false;
               btnText.textContent = "Giriş Yap";
             }
           });
-        }
-
-        function closeModal() {
-          if (modal) {
-            modal.classList.remove("active");
-            // Re-enable scrolling
-            document.body.style.overflow = "auto";
-          }
         }
       });
     </script>
