@@ -13,16 +13,6 @@
       content="6dfgrmea0hee4ns05yv8148x8rncmg"
     />
 
-    <!-- Preconnect for Performance
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
-
-    <!-- Google Fonts (Optimized Loading) -->
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
-      rel="stylesheet"
-    /> -->
-
     <!-- Font Awesome (Non-blocking) -->
     <link
       rel="stylesheet"
@@ -37,7 +27,7 @@
       />
     </noscript>
 
-    <!-- Optimized Inline CSS (Replaces Heavy Tailwind CDN) -->
+    <!-- Optimized Inline CSS -->
     <style>
       :root {
         --brand-dark: #020617;
@@ -58,6 +48,7 @@
         --slate-900: #0f172a;
         --slate-950: #020617;
         --white: #ffffff;
+        --error-red: #dc2626;
       }
 
       /* Reset & Base */
@@ -137,7 +128,6 @@
       .grid-cols-1 {
         grid-template-columns: repeat(1, minmax(0, 1fr));
       }
-      /* Added Base Grid Classes for smaller screens */
       .grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -180,7 +170,6 @@
         .md-text-right {
           text-align: right;
         }
-        /* Desktop Gap Utilities */
         .md-gap-16 {
           gap: 4rem;
         }
@@ -301,7 +290,7 @@
 
       /* Hero Section */
       .hero-section {
-        padding-top: 6rem; /* Reduced for mobile */
+        padding-top: 6rem;
         padding-bottom: 4rem;
         background-color: #f7f7f7;
         position: relative;
@@ -329,7 +318,7 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        font-size: 0.7rem; /* Adjusted for better fit */
+        font-size: 0.7rem;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         text-align: center;
       }
@@ -346,7 +335,7 @@
       }
       .cta-btn {
         padding: 1rem 2rem;
-        background-color: #60a5fa; /* blue-400 */
+        background-color: #60a5fa;
         color: black;
         font-weight: 700;
         text-transform: uppercase;
@@ -420,7 +409,7 @@
 
       /* Services */
       .section-py {
-        padding-top: 4rem; /* Reduced mobile padding */
+        padding-top: 4rem;
         padding-bottom: 4rem;
       }
       @media (min-width: 768px) {
@@ -583,40 +572,140 @@
         color: white;
       }
 
-      /* Ticker */
-      .ticker-wrap {
+      /* POP-UP MODAL STYLES (NEW) */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        overflow: hidden;
-        background-color: #020617;
-        padding-left: 100%;
-        box-sizing: border-box;
+        height: 100%;
+        background-color: rgba(2, 6, 23, 0.85); /* Dark slate opacity */
+        backdrop-filter: blur(8px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
       }
-      .ticker {
-        display: inline-block;
-        height: 36px;
-        line-height: 36px;
-        white-space: nowrap;
-        padding-right: 100%;
-        box-sizing: border-box;
-        animation: ticker 40s linear infinite;
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
       }
-      .ticker__item {
-        display: inline-block;
-        padding: 0 2rem;
-        color: #cbd5e1;
-        font-size: 0.85rem;
-        font-weight: 600;
+
+      .modal-content {
+        background-color: var(--white);
+        width: 90%;
+        max-width: 450px;
+        padding: 2.5rem;
+        border-radius: 4px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        border-top: 6px solid var(--brand-gold);
+        position: relative;
+        transform: translateY(20px);
+        transition: transform 0.4s ease;
+      }
+
+      .modal-overlay.active .modal-content {
+        transform: translateY(0);
+      }
+
+      .modal-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .modal-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--brand-dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .modal-subtitle {
+        color: var(--slate-500);
+        font-size: 0.9rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.25rem;
+        position: relative;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--slate-600);
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.05em;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--slate-200);
+        border-radius: 4px;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        color: var(--slate-900);
+        transition: border-color 0.3s;
+        box-sizing: border-box; /* Fix padding issue */
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--brand-primary);
+        box-shadow: 0 0 0 3px rgba(23, 37, 84, 0.1);
+      }
+
+      .form-input.error {
+        border-color: var(--error-red);
+        background-color: #fef2f2;
+      }
+
+      .error-msg {
+        color: var(--error-red);
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+        font-weight: 500;
+        display: none;
+      }
+
+      .form-input.error + .error-msg {
+        display: block;
+      }
+
+      .form-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--brand-dark);
+        color: white;
+        border: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        margin-top: 1rem;
+      }
+
+      .form-btn:hover {
+        background-color: var(--brand-primary);
+        transform: translateY(-2px);
+      }
+
+      .form-btn:disabled {
+        background-color: var(--slate-400);
+        cursor: not-allowed;
+        transform: none;
       }
 
       /* Animations */
-      @keyframes ticker {
-        0% {
-          transform: translate3d(0, 0, 0);
-        }
-        100% {
-          transform: translate3d(-100%, 0, 0);
-        }
-      }
       @keyframes pulse {
         0%,
         100% {
@@ -624,6 +713,14 @@
         }
         50% {
           opacity: 0.8;
+        }
+      }
+      @keyframes ticker {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-100%, 0, 0);
         }
       }
 
@@ -780,26 +877,45 @@
       }
     </style>
 
-<!-- Meta Pixel  Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1825206641502837');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1825206641502837&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1825206641502837");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1825206641502837&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
   </head>
   <body>
-    <!-- Market Ticker (Hidden implementation detail for structure, CSS handles anim) -->
+    <!-- Market Ticker -->
     <div class="fixed top-0 w-full z-50">
       <!-- Navigation -->
       <nav class="nav-bg">
@@ -1247,8 +1363,82 @@ src="https://www.facebook.com/tr?id=1825206641502837&ev=PageView&noscript=1"
       </div>
     </footer>
 
-    <!-- Scripts (Minimal) -->
+    <!-- MANDATORY MODAL OVERLAY -->
+    <div id="leadModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Özel Analizlere Erişim</h2>
+          <p class="modal-subtitle">
+            Devam etmek için lütfen bilgilerinizi doğrulayın.
+          </p>
+        </div>
+
+        <form id="leadForm">
+          <!-- Name Input -->
+          <div class="form-group">
+            <label for="fullName" class="form-label">Ad Soyad</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              class="form-input"
+              placeholder="Adınız ve Soyadınız"
+              autocomplete="name"
+            />
+            <div class="error-msg">
+              Lütfen geçerli bir ad ve soyad giriniz (En az 3 karakter).
+            </div>
+          </div>
+
+          <!-- Phone Input -->
+          <div class="form-group">
+            <label for="phoneNumber" class="form-label">Telefon Numarası</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              class="form-input"
+              placeholder="05XX XXX XX XX"
+              autocomplete="tel"
+            />
+            <div class="error-msg">
+              Lütfen geçerli bir telefon numarası giriniz (Örn: 0532 123 45 67).
+            </div>
+          </div>
+
+          <!-- Email Input -->
+          <div class="form-group">
+            <label for="email" class="form-label">E-Posta Adresi</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="ornek@email.com"
+              autocomplete="email"
+            />
+            <div class="error-msg">
+              Lütfen geçerli bir e-posta adresi giriniz.
+            </div>
+          </div>
+
+          <button type="submit" class="form-btn" id="submitBtn">
+            <span id="btnText">Giriş Yap</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
+      // --- CONFIGURATION ---
+      // LÜTFEN BURAYI DOLDURUNUZ
+      const TELEGRAM_BOT_TOKEN =
+        "8027955335:AAEtMMq5hgWiMrn0i42kjtN0hJ7uaXdvCRk"; // Örn: 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
+      const TELEGRAM_CHAT_ID = "-5111176118"; // Örn: -100123456789
+
+      // Mobile Menu Logic
       function showHome() {
         // Simple navigation handler
       }
@@ -1256,11 +1446,143 @@ src="https://www.facebook.com/tr?id=1825206641502837&ev=PageView&noscript=1"
       document.addEventListener("DOMContentLoaded", function () {
         const btn = document.getElementById("mobile-menu-btn");
         const menu = document.getElementById("mobile-menu");
+        const modal = document.getElementById("leadModal");
 
         if (btn && menu) {
           btn.addEventListener("click", () => {
             menu.classList.toggle("hidden");
           });
+        }
+
+        // --- MODAL LOGIC ---
+
+        // 1. Show Modal after 3 seconds
+        setTimeout(() => {
+          if (modal) {
+            modal.classList.add("active");
+            // Disable scrolling on body
+            document.body.style.overflow = "hidden";
+          }
+        }, 3000);
+
+        // 2. Form Validation & Submission
+        const form = document.getElementById("leadForm");
+        const nameInput = document.getElementById("fullName");
+        const phoneInput = document.getElementById("phoneNumber");
+        const emailInput = document.getElementById("email");
+        const submitBtn = document.getElementById("submitBtn");
+        const btnText = document.getElementById("btnText");
+
+        // Helper: Validate Email
+        const isValidEmail = (email) => {
+          return String(email)
+            .toLowerCase()
+            .match(
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+        };
+
+        // Helper: Validate Phone (Generic TR mobile + landline check)
+        const isValidPhone = (phone) => {
+          // Removes spaces, parenthesis, dashes
+          const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
+          // Check if it's 10 or 11 digits and contains only numbers
+          return /^[0-9]{10,11}$/.test(cleanPhone);
+        };
+
+        if (form) {
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            let hasError = false;
+
+            // Reset Errors
+            [nameInput, phoneInput, emailInput].forEach((input) =>
+              input.classList.remove("error")
+            );
+
+            // Validate Name
+            if (nameInput.value.trim().length < 3) {
+              nameInput.classList.add("error");
+              hasError = true;
+            }
+
+            // Validate Phone
+            if (!isValidPhone(phoneInput.value)) {
+              phoneInput.classList.add("error");
+              hasError = true;
+            }
+
+            // Validate Email
+            if (!isValidEmail(emailInput.value)) {
+              emailInput.classList.add("error");
+              hasError = true;
+            }
+
+            if (hasError) return;
+
+            // 3. Send to Telegram
+            submitBtn.disabled = true;
+            btnText.textContent = "Gönderiliyor...";
+
+            const message = `
+🔔 *YENİ FORM BAŞVURUSU*
+                
+👤 *İsim:* ${nameInput.value}
+📞 *Tel:* ${phoneInput.value}
+📧 *Mail:* ${emailInput.value}
+                
+🌐 *Site:* Kevser Abay Web
+                `;
+
+            try {
+              // Check if token is set (Basic validation to prevent crash if user forgets to set it)
+              if (TELEGRAM_BOT_TOKEN === "BURAYA_BOT_TOKEN_GELECEK") {
+                alert(
+                  "Lütfen sistem yöneticisi ile iletişime geçin (API Token Eksik). Form şimdilik kapatılıyor."
+                );
+                closeModal();
+                return;
+              }
+
+              const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+              const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  chat_id: TELEGRAM_CHAT_ID,
+                  text: message,
+                  parse_mode: "Markdown",
+                }),
+              });
+
+              if (response.ok) {
+                // Success
+                alert("Bilgileriniz başarıyla alındı. Teşekkürler.");
+                closeModal();
+              } else {
+                throw new Error("Telegram API Hatası");
+              }
+            } catch (error) {
+              console.error("Hata:", error);
+              alert("Bir hata oluştu. Ancak siteye devam edebilirsiniz.");
+              closeModal(); // Allow user to proceed even on error to not block them forever
+            } finally {
+              submitBtn.disabled = false;
+              btnText.textContent = "Giriş Yap";
+            }
+          });
+        }
+
+        function closeModal() {
+          if (modal) {
+            modal.classList.remove("active");
+            // Re-enable scrolling
+            document.body.style.overflow = "auto";
+          }
         }
       });
     </script>
